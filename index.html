@@ -182,7 +182,7 @@ $('roomList').addEventListener('click',event=>{const btn=event.target.closest('[
 $('overviewRooms').addEventListener('click',event=>{const btn=event.target.closest('[data-open-room]');if(btn)openRoom(btn.dataset.openRoom)});
 $('logoutBtn').addEventListener('click',async()=>{if(roomChannel)await supabase.removeChannel(roomChannel);await supabase.auth.signOut();user=null;activeRoom=null;$('appView').classList.add('hidden');$('authView').classList.remove('hidden');$('password').value='';showAuth('login')});
 supabase.auth.getSession().then(({data,error})=>{if(error)throw error;if(data.session)enterApp(data.session.user)}).catch(error=>setAuthMessage('Sitzung konnte nicht geladen werden: '+readableError(error),true));
-supabase.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session?.user&&!user)enterApp(session.user)});
+
 if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
 </script>
 </body>
