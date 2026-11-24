@@ -103,11 +103,11 @@ $('authForm').addEventListener('submit',async event=>{
   if(authMode==='signup'){
    const {data,error}=await supabase.auth.signUp({email,password,options:{data:{display_name:displayName}}});if(error)throw error;
    if(data.session){await enterApp(data.user,displayName)}
-   else{setAuthMessage('Fast fertig! Bestätige deine E-Mail-Adresse und melde dich danach an.');showAuth('login')}
+   else{showAuth('login');setAuthMessage('Fast fertig! Bestätige deine E-Mail-Adresse und melde dich danach an.')}
   }else{
    const {data,error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;await enterApp(data.user);
   }
- }catch(error){setAuthMessage(readableError(error),true)}finally{setBusy(button,false)}
+ }catch(error){setAuthMessage(readableError(error),true)}finally{button.disabled=false;button.textContent=authMode==='signup'?'Konto erstellen':'Anmelden'}
 });
 function readableError(error){const message=error?.message||'Unbekannter Fehler';if(/invalid login credentials/i.test(message))return'E-Mail oder Passwort stimmt nicht.';if(/user already registered/i.test(message))return'Diese E-Mail hat bereits ein Konto. Melde dich an.';if(/email not confirmed/i.test(message))return'Bitte bestätige zuerst deine E-Mail-Adresse.';if(/password should be at least/i.test(message))return'Das Passwort ist zu kurz.';return message}
 async function ensureProfile(displayName=''){
