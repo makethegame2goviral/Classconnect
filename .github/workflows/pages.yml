@@ -19,8 +19,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Check app JavaScript
+        run: |
+          python3 - <<'PY'
+          html = open('index.html', encoding='utf-8').read()
+          start = html.index('<script type="module">') + len('<script type="module">')
+          end = html.index('</script>', start)
+          open('/tmp/classconnect.mjs', 'w', encoding='utf-8').write(html[start:end])
+          PY
+          node --check /tmp/classconnect.mjs
+          python3 -m json.tool manifest.webmanifest > /dev/null
       - name: Configure Pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
       - name: Upload site
         uses: actions/upload-pages-artifact@v3
         with:
