@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#090a12">
+<meta name="description" content="ClassConnect – dein privater Space für Klassenräume, Live-Chat und gemeinsame Notizen.">
+<title>ClassConnect — Dein Klassenraum</title>
+<link rel="icon" href="./icon.svg" type="image/svg+xml">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;--bg:#090a12;--panel:#11131e;--panel2:#171a28;--line:#272b3b;--text:#f4f5ff;--muted:#9299b2;--purple:#a78bfa;--cyan:#72e3e8;--green:#79e5b4;--red:#ff8299;--shadow:0 24px 80px #0006}
+*{box-sizing:border-box}html{min-height:100%;background:var(--bg)}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 14% -12%,#3c2a6840,transparent 38%),radial-gradient(ellipse at 95% 18%,#1b536044,transparent 34%),var(--bg);color:var(--text);font-family:"DM Sans",system-ui,sans-serif}button,input,textarea{font:inherit}button{color:inherit;cursor:pointer}button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}.hidden{display:none!important}
+#authView{min-height:100vh;display:grid;place-items:center;padding:24px}.auth-shell{width:min(100%,980px);min-height:610px;display:grid;grid-template-columns:1.05fr .95fr;overflow:hidden;border:1px solid #ffffff18;border-radius:30px;background:#11131de8;box-shadow:var(--shadow)}.auth-art{padding:46px;display:flex;flex-direction:column;justify-content:space-between;position:relative;overflow:hidden;background:radial-gradient(circle at 75% 25%,#8c6aff55,transparent 32%),radial-gradient(circle at 15% 85%,#48cbd044,transparent 35%),linear-gradient(145deg,#211a39,#111827 75%)}.auth-art:before,.auth-art:after{content:"";position:absolute;border:1px solid #ffffff20;border-radius:50%;width:390px;height:390px;right:-110px;top:105px;box-shadow:0 0 80px #a78bfa22}.auth-art:after{width:270px;height:270px;right:-50px;top:165px}.brand{display:flex;align-items:center;gap:12px;font:700 20px "Space Grotesk",sans-serif;letter-spacing:-.6px;position:relative;z-index:1}.brand-mark{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(135deg,#b39aff,#64e3e8);color:#11131e;font-weight:900;box-shadow:0 0 30px #a78bfa55}.art-copy{position:relative;z-index:1;max-width:440px}.art-copy .tag{color:var(--cyan);font-size:11px;letter-spacing:2.4px;text-transform:uppercase;font-weight:800}.art-copy h1{font:700 clamp(38px,5vw,58px)/1.02 "Space Grotesk",sans-serif;letter-spacing:-2.7px;margin:17px 0}.gradient-text{background:linear-gradient(90deg,#c0aaff,#79e7eb);background-clip:text;color:transparent}.art-copy p{color:#c3c8dc;line-height:1.8;max-width:360px}.art-foot{position:relative;z-index:1;color:#a8abc1;font-size:11px;letter-spacing:.8px}.auth-form-wrap{padding:48px 44px;display:flex;flex-direction:column;justify-content:center}.auth-form-wrap h2{font:700 29px "Space Grotesk",sans-serif;margin:0 0 8px}.muted{color:var(--muted)}.auth-form-wrap>p{margin:0 0 28px;font-size:13px}.field{display:grid;gap:7px;margin:14px 0}.field label{font-size:12px;color:#c9cce0;font-weight:700}.field input,.input{width:100%;border:1px solid #30354a;background:#0c0e17;color:white;padding:13px 14px;border-radius:13px;outline:none;transition:.2s}.field input:focus,.input:focus{border-color:var(--purple);box-shadow:0 0 0 4px #a78bfa18}.primary{border:0;background:linear-gradient(110deg,#b39aff,#8e9fff 58%,#70e3e8);color:#10121c;font-weight:800;border-radius:13px;padding:13px 17px;box-shadow:0 10px 28px #9278fa2a;transition:transform .18s,filter .18s}.primary:hover{filter:brightness(1.08);transform:translateY(-1px)}.primary:disabled{opacity:.55;cursor:wait;transform:none}.full{width:100%;margin-top:10px}.switch-auth{margin-top:20px;text-align:center;color:var(--muted);font-size:12px}.text-btn{border:0;background:none;color:#c1adff;font-weight:800;padding:4px}.auth-message{min-height:20px;margin-top:13px;color:var(--cyan);font-size:12px;line-height:1.5}
+#appView{min-height:100vh;padding:18px}.shell{max-width:1480px;margin:auto;min-height:calc(100vh - 36px);display:grid;grid-template-columns:252px minmax(0,1fr);gap:16px}.sidebar,.content{border:1px solid #ffffff13;background:#10131ee8;backdrop-filter:blur(20px);border-radius:24px;box-shadow:0 20px 70px #0003}.sidebar{padding:18px;display:flex;flex-direction:column;min-height:calc(100vh - 36px)}.side-brand{padding:5px 4px 24px}.side-brand .brand{font-size:18px}.side-section{font-size:10px;text-transform:uppercase;letter-spacing:1.8px;color:#747d99;font-weight:800;margin:12px 10px}.nav-btn,.room-btn{border:0;background:transparent;color:#aeb5ca;width:100%;display:flex;align-items:center;gap:12px;padding:12px;border-radius:13px;text-align:left;margin:2px 0;font-size:13px;transition:.18s}.nav-btn:hover,.room-btn:hover,.nav-btn.active,.room-btn.active{background:linear-gradient(100deg,#a78bfa22,#72e3e811);color:#fff}.nav-btn.active{box-shadow:inset 2px 0 var(--purple)}.nav-icon{width:20px;text-align:center;font-size:17px}.rooms-head{display:flex;justify-content:space-between;align-items:center;margin-top:22px}.rooms-head .side-section{margin-right:0}.icon-btn{border:1px solid #333950;background:#1a1e2e;border-radius:11px;width:32px;height:32px;color:#d5caff;font-size:18px}.room-btn{font-size:12px}.room-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px #72e3e888;flex:none}.side-bottom{margin-top:auto;padding:14px;border:1px solid #ffffff12;border-radius:16px;background:linear-gradient(140deg,#a78bfa12,#72e3e808)}.side-bottom strong{font-size:12px}.side-bottom p{color:var(--muted);font-size:10px;line-height:1.6;margin:5px 0 0}.profile-row{display:flex;align-items:center;gap:10px;margin-top:14px;padding:10px 3px 0;border-top:1px solid #ffffff12}.avatar{width:35px;height:35px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#c1a4ff,#6be2e6);color:#11131e;font-weight:900;flex:none}.profile-info{min-width:0;flex:1}.profile-info b{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.profile-info small{font-size:10px;color:var(--muted)}.logout{border:0;background:transparent;color:#8c93aa;font-size:17px;padding:7px}.content{padding:26px;min-width:0;overflow:hidden}.topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:28px}.crumb{font-size:11px;color:var(--muted)}.top-actions{display:flex;gap:9px;align-items:center}.status-pill{border:1px solid #ffffff16;background:#ffffff07;border-radius:99px;padding:8px 12px;font-size:10px;color:#aeb5ca}.online-dot{display:inline-block;width:7px;height:7px;background:var(--green);border-radius:50%;margin-right:6px;box-shadow:0 0 10px #79e5b4}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:24px}.eyebrow{font-size:10px;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;font-weight:800}.hero h1{font:700 clamp(29px,4vw,43px)/1.08 "Space Grotesk",sans-serif;letter-spacing:-1.8px;margin:9px 0}.hero p{margin:0;color:var(--muted);font-size:13px}.hero-actions{display:flex;gap:9px;flex-wrap:wrap}.secondary{border:1px solid #353a51;background:#1a1d2b;color:#e0ddf6;border-radius:13px;padding:11px 14px;font-size:12px;font-weight:700}.secondary:hover{border-color:#8e7be0;background:#242139}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:22px 0}.stat{border:1px solid #ffffff12;background:linear-gradient(140deg,#1b1d2d,#141724);padding:15px 17px;border-radius:17px}.stat small{font-size:10px;color:var(--muted)}.stat strong{display:block;font:700 24px "Space Grotesk",sans-serif;margin:3px 0}.stat em{font-style:normal;font-size:10px;color:var(--cyan)}.panel-grid{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(260px,.75fr);gap:14px}.panel{border:1px solid #ffffff13;background:linear-gradient(145deg,#191c2a,#121521);border-radius:19px;padding:18px;min-width:0}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:15px}.panel-head h2{font:700 15px "Space Grotesk",sans-serif;margin:0}.panel-head small{color:var(--muted);font-size:10px}.room-head{display:flex;align-items:center;gap:12px;margin:0 0 20px}.room-symbol{width:43px;height:43px;border-radius:14px;background:linear-gradient(135deg,#a78bfa30,#72e3e825);display:grid;place-items:center;font-size:19px}.room-head h1{font:700 24px "Space Grotesk",sans-serif;margin:0}.room-head p{font-size:11px;color:var(--muted);margin:3px 0 0}.room-tabs{display:flex;gap:5px;padding:4px;background:#0c0e17;border-radius:12px;width:max-content;margin:0 0 14px}.tab{border:0;background:transparent;color:#8f97b1;border-radius:9px;padding:8px 13px;font-size:11px;font-weight:700}.tab.active{background:#29243e;color:#e8ddff}.chat-panel{display:flex;flex-direction:column;height:min(58vh,560px);min-height:360px}.messages{flex:1;overflow:auto;display:flex;flex-direction:column;gap:13px;padding:3px 4px 16px}.message{display:flex;gap:9px;max-width:88%;align-items:flex-end}.message.mine{align-self:flex-end;flex-direction:row-reverse}.message-avatar{width:28px;height:28px;border-radius:10px;background:#454065;display:grid;place-items:center;font-size:10px;font-weight:800;flex:none}.message-body{min-width:0}.message-meta{font-size:9px;color:#9299b2;margin:0 0 4px 2px}.bubble{background:#24283a;border:1px solid #ffffff0a;border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:12px;line-height:1.55;overflow-wrap:anywhere;white-space:pre-wrap}.mine .bubble{background:linear-gradient(130deg,#55458e,#354d70);border-radius:14px 14px 4px 14px}.mine .message-meta{text-align:right;margin-right:2px}.composer{display:flex;gap:8px;padding-top:12px;border-top:1px solid #ffffff12}.composer input{flex:1;min-width:0;border:1px solid #30364b;background:#0d101a;color:white;padding:12px 14px;border-radius:12px;outline:none;font-size:12px}.composer input:focus{border-color:var(--purple)}.send-btn{width:44px;border:0;border-radius:12px;background:linear-gradient(135deg,#b49aff,#70e3e8);color:#10131c;font-size:17px;font-weight:900}.note-editor{width:100%;min-height:290px;resize:vertical;background:#0d101a;border:1px solid #30364b;border-radius:13px;padding:14px;color:#e9e8f7;outline:none;font:13px/1.7 "DM Sans",sans-serif}.note-editor:focus{border-color:var(--purple)}.save-state{font-size:10px;color:var(--muted);margin-top:8px;min-height:15px}.feature-list{display:grid;gap:9px}.feature{display:flex;align-items:center;gap:11px;padding:11px;border:1px solid #ffffff0b;background:#ffffff05;border-radius:13px}.feature-icon{width:34px;height:34px;display:grid;place-items:center;background:#a78bfa1c;border-radius:11px}.feature b{display:block;font-size:11px}.feature small{color:var(--muted);font-size:10px}.empty-state{padding:35px 12px;text-align:center;color:var(--muted);font-size:12px}.empty-state strong{display:block;color:#e7e4f7;font-size:14px;margin-bottom:5px}.room-actions{display:flex;gap:8px;flex-wrap:wrap}.invite-code{font:700 17px "Space Grotesk",sans-serif;letter-spacing:2px;color:var(--cyan);background:#0d111a;border:1px dashed #45546a;padding:12px;border-radius:12px;text-align:center}.footnote{text-align:center;color:#737b94;font-size:10px;margin-top:20px}
+.modal-back{position:fixed;inset:0;background:#05060bdc;backdrop-filter:blur(9px);display:none;place-items:center;padding:18px;z-index:20}.modal-back.show{display:grid}.modal{width:min(430px,100%);background:#171b29;border:1px solid #ffffff20;border-radius:22px;padding:23px;box-shadow:var(--shadow)}.modal h2{font:700 21px "Space Grotesk",sans-serif;margin:0 0 6px}.modal p{font-size:12px;color:var(--muted);margin:0 0 16px;line-height:1.6}.modal input{width:100%;background:#0d101a;border:1px solid #34394e;color:white;padding:12px;border-radius:12px;outline:none}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:17px}.toast{position:fixed;left:50%;bottom:22px;transform:translate(-50%,18px);opacity:0;pointer-events:none;z-index:30;background:#22283a;border:1px solid #ffffff22;padding:11px 16px;border-radius:12px;font-size:12px;box-shadow:var(--shadow);transition:.22s}.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:980px){.shell{grid-template-columns:205px minmax(0,1fr)}.sidebar{padding:13px}.content{padding:20px}.panel-grid{grid-template-columns:1fr}.auth-shell{max-width:800px}.auth-art{padding:34px}.auth-form-wrap{padding:38px 30px}}
+@media(max-width:680px){#appView{padding:8px}.shell{display:flex;flex-direction:column;gap:8px;min-height:calc(100vh - 16px)}.sidebar{min-height:0;border-radius:18px;padding:10px;display:block}.side-brand{display:none}.sidebar nav{display:flex;gap:5px}.nav-btn{justify-content:center;padding:10px 8px;font-size:11px}.nav-icon{width:auto}.rooms-head,.side-section,.room-list,.side-bottom{display:none!important}.profile-row{margin-top:8px;padding-top:8px}.profile-row .avatar{width:29px;height:29px}.content{padding:16px;border-radius:18px;flex:1}.topline{margin-bottom:20px}.hero{display:block}.hero-actions{margin-top:14px}.stats{gap:7px}.stat{padding:11px}.stat strong{font-size:20px}.panel{padding:13px}.chat-panel{height:53vh;min-height:320px}.auth-shell{display:block;min-height:0;border-radius:22px}.auth-art{min-height:220px;padding:25px}.art-copy{margin-top:36px}.art-copy h1{font-size:37px;margin:9px 0}.art-copy p{font-size:12px;margin:0}.art-foot{display:none}.auth-form-wrap{padding:28px 23px}.auth-form-wrap h2{font-size:25px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
+</style>
+</head>
+<body>
+<section id="authView">
+ <div class="auth-shell">
+  <div class="auth-art">
+   <div class="brand"><div class="brand-mark">C</div>ClassConnect</div>
+   <div class="art-copy"><div class="tag">YOUR CLASS. YOUR SPACE.</div><h1>Zusammen<br><span class="gradient-text">mehr schaffen.</span></h1><p>Dein eigener Ort für Klassenräume, Ideen und Nachrichten – nur für die Leute, die du einlädst.</p></div>
+   <div class="art-foot">PRIVATE ROOMS · LIVE CHAT · SHARED NOTES</div>
+  </div>
+  <div class="auth-form-wrap">
+   <h2 id="authTitle">Willkommen zurück</h2><p class="muted" id="authSubtitle">Melde dich an und geh zurück in deinen Space.</p>
+   <form id="authForm">
+    <div class="field hidden" id="nameField"><label for="displayName">Dein Anzeigename</label><input id="displayName" maxlength="32" autocomplete="nickname" placeholder="z. B. Alex"></div>
+    <div class="field"><label for="email">E-Mail-Adresse</label><input id="email" type="email" required maxlength="254" autocomplete="email" placeholder="du@beispiel.de"></div>
+    <div class="field"><label for="password">Passwort</label><input id="password" type="password" required minlength="8" autocomplete="current-password" placeholder="Mindestens 8 Zeichen"></div>
+    <button class="primary full" id="authSubmit" type="submit">Anmelden</button>
+   </form>
+   <div class="auth-message" id="authMessage" role="status" aria-live="polite"></div>
+   <div class="switch-auth"><span id="switchText">Noch kein Konto?</span> <button class="text-btn" id="switchMode" type="button">Konto erstellen</button></div>
+   <p class="muted" style="font-size:10px;line-height:1.6;margin-top:18px">Nutze hier am besten einen Anzeigenamen statt deines vollständigen Namens. Deine E-Mail-Adresse wird anderen Mitgliedern nicht angezeigt.</p>
+  </div>
+ </div>
+</section>
+<section id="appView" class="hidden">
+ <div class="shell">
+  <aside class="sidebar">
+   <div class="side-brand"><div class="brand"><div class="brand-mark">C</div>ClassConnect</div></div>
+   <div class="side-section">Workspace</div>
+   <nav>
+    <button class="nav-btn active" data-page="overview"><span class="nav-icon">⌂</span> Übersicht</button>
+    <button class="nav-btn" data-page="room"><span class="nav-icon">◈</span> Klassenraum</button>
+   </nav>
+   <div class="rooms-head"><div class="side-section">Deine Räume</div><button class="icon-btn" id="createRoomBtn" title="Raum erstellen" aria-label="Raum erstellen">＋</button></div>
+   <div class="room-list" id="roomList"></div>
+   <div class="side-bottom"><strong>✦ Euer Space, eure Regeln</strong><p>Teile einen Raumcode nur mit Menschen, die wirklich dazugehören.</p></div>
+   <div class="profile-row"><div class="avatar" id="userAvatar">C</div><div class="profile-info"><b id="userName">Du</b><small>Mitglied</small></div><button class="logout" id="logoutBtn" title="Abmelden" aria-label="Abmelden">↪</button></div>
+  </aside>
+  <main class="content">
+   <div class="topline"><div class="crumb">CLASSCONNECT <span style="color:#586078">/</span> <span id="crumbText">ÜBERSICHT</span></div><div class="top-actions"><div class="status-pill"><span class="online-dot"></span>Verbunden</div></div></div>
+   <section id="overviewPage">
+    <div class="hero"><div><div class="eyebrow">✦ DEIN DIGITALER KLASSENRAUM</div><h1>Hey, <span class="gradient-text" id="helloName">du</span>.</h1><p>Deine Räume, Nachrichten und Ideen an einem Ort.</p></div><div class="hero-actions"><button class="secondary" id="joinRoomBtn">↗ Code eingeben</button><button class="primary" id="heroCreateBtn">＋ Raum erstellen</button></div></div>
+    <div class="stats"><div class="stat"><small>DEINE RÄUME</small><strong id="roomCount">0</strong><em>✦ deine Community</em></div><div class="stat"><small>NACHRICHTEN</small><strong id="messageCount">0</strong><em>↗ im ausgewählten Raum</em></div><div class="stat"><small>GEMEINSAME NOTIZEN</small><strong id="notesStatus">Bereit</strong><em>✎ zusammen festhalten</em></div></div>
+    <div class="panel-grid">
+     <section class="panel"><div class="panel-head"><h2>Deine Räume</h2><small>Wähle einen Space</small></div><div id="overviewRooms" class="feature-list"></div></section>
+     <section class="panel"><div class="panel-head"><h2>Was geht hier?</h2><small>Dein Space</small></div><div class="feature-list"><div class="feature"><div class="feature-icon">💬</div><div><b>Live-Klassenchat</b><small>Schreibt miteinander in Echtzeit.</small></div></div><div class="feature"><div class="feature-icon">📝</div><div><b>Gemeinsame Notizen</b><small>Ideen und Aufgaben zusammen sammeln.</small></div></div><div class="feature"><div class="feature-icon">🔗</div><div><b>Einladung per Code</b><small>Nur eingeladene Leute kommen in euren Raum.</small></div></div></div></section>
+    </div>
+   </section>
+   <section id="roomPage" class="hidden">
+    <div class="hero"><div><div class="eyebrow">✦ DEIN SPACE</div><h1 id="roomTitleHero">Klassenraum</h1><p id="roomDescription">Ein Ort für eure Crew.</p></div><div class="hero-actions"><button class="secondary" id="shareRoomBtn">↗ Freunde einladen</button></div></div>
+    <div class="room-head"><div class="room-symbol">◈</div><div style="flex:1;min-width:0"><h1 id="roomName">Klassenraum</h1><p id="roomMeta">Privater Raum · nur Mitglieder</p></div><div class="status-pill" id="memberCount">● Mitglieder</div></div>
+    <div class="room-tabs"><button class="tab active" data-tab="chat">◈ Chat</button><button class="tab" data-tab="notes">▤ Notizen</button><button class="tab" data-tab="info">ⓘ Info</button></div>
+    <section id="chatTab" class="panel chat-panel"><div class="panel-head"><h2>Live-Chat</h2><small id="chatStatus">Verbinde …</small></div><div class="messages" id="messages"><div class="empty-state">Lade Nachrichten …</div></div><form class="composer" id="messageForm"><input id="messageInput" maxlength="1500" autocomplete="off" placeholder="Schreib etwas Nettes …" aria-label="Nachricht"><button class="send-btn" type="submit" aria-label="Nachricht senden">➤</button></form></section>
+    <section id="notesTab" class="panel hidden"><div class="panel-head"><h2>Gemeinsame Notizen</h2><small>Für alle im Raum</small></div><textarea id="noteEditor" class="note-editor" maxlength="12000" placeholder="Sammelt hier eure Ideen, Aufgaben und Gedanken …"></textarea><div class="save-state" id="saveState">Änderungen werden automatisch gespeichert.</div></section>
+    <section id="infoTab" class="panel hidden"><div class="panel-head"><h2>Raum-Informationen</h2><small>Einladung & Mitglieder</small></div><p class="muted" style="font-size:12px">Teile diesen Code mit deinen Freunden. Sie können damit dem Raum beitreten.</p><div class="invite-code" id="inviteCode">—</div><div class="room-actions" style="margin-top:12px"><button class="primary" id="copyCodeBtn">Code kopieren</button><button class="secondary" id="copyLinkBtn">Einladungslink kopieren</button></div><div class="panel-head" style="margin-top:24px"><h2>Mitglieder</h2><small id="memberLabel">Mitglieder dieses Raums</small></div><div id="memberList" class="feature-list"></div></section>
+   </section>
+   <div class="footnote">CLASSCONNECT · BUILT FOR YOUR CREW</div>
+  </main>
+ </div>
+</section>
+<div class="modal-back" id="modalBack"><div class="modal"><h2 id="modalTitle">Neuen Raum erstellen</h2><p id="modalDescription">Gib deinem Raum einen Namen.</p><input id="modalInput" maxlength="48" placeholder="z. B. Klasse 9A"><div class="modal-actions"><button class="secondary" id="modalCancel">Abbrechen</button><button class="primary" id="modalConfirm">Weiter</button></div></div></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="module">
+import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.57.0';
+const SUPABASE_URL='https://xbefkwirfijxglgoogrn.supabase.co';
+const SUPABASE_KEY='sb_publishable_3hsQ2uEpBBYOQ2rh44J2BQ_6mt9md6T';
+const supabase=createClient(SUPABASE_URL,SUPABASE_KEY);
+const $=id=>document.getElementById(id);
+const escapeHTML=value=>String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let user=null,profile=null,rooms=[],activeRoom=null,roomChannel=null,authMode='login',modalAction=null,saveTimer=null,lastMessages=[];
+const toast=message=>{const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2400)};
+function setAuthMessage(message,isError=false){$('authMessage').textContent=message;$('authMessage').style.color=isError?'#ff9aae':'#72e3e8'}
+function setBusy(button,busy,label){button.disabled=busy;if(busy){button.dataset.old=button.textContent;button.textContent=label}else{button.textContent=button.dataset.old||button.textContent}}
+function showAuth(mode){authMode=mode;const signup=mode==='signup';$('authTitle').textContent=signup?'Dein Konto erstellen':'Willkommen zurück';$('authSubtitle').textContent=signup?'Ein Anzeigename reicht – und schon bist du dabei.':'Melde dich an und geh zurück in deinen Space.';$('nameField').classList.toggle('hidden',!signup);$('password').autocomplete=signup?'new-password':'current-password';$('authSubmit').textContent=signup?'Konto erstellen':'Anmelden';$('switchText').textContent=signup?'Du hast schon ein Konto?':'Noch kein Konto?';$('switchMode').textContent=signup?'Anmelden':'Konto erstellen';setAuthMessage('')}
+$('switchMode').addEventListener('click',()=>showAuth(authMode==='login'?'signup':'login'));
+$('authForm').addEventListener('submit',async event=>{
+ event.preventDefault();const button=$('authSubmit');const email=$('email').value.trim().toLowerCase();const password=$('password').value;const displayName=$('displayName').value.trim();
+ if(authMode==='signup'&&displayName.length<2){setAuthMessage('Bitte wähle einen Anzeigenamen mit mindestens 2 Zeichen.',true);return}
+ setBusy(button,true,'Einen Moment …');setAuthMessage('');
+ try{
+  if(authMode==='signup'){
+   const {data,error}=await supabase.auth.signUp({email,password,options:{data:{display_name:displayName}}});if(error)throw error;
+   if(data.session){await enterApp(data.user,displayName)}
+   else{setAuthMessage('Fast fertig! Bestätige deine E-Mail-Adresse und melde dich danach an.');showAuth('login')}
+  }else{
+   const {data,error}=await supabase.auth.signInWithPassword({email,password});if(error)throw error;await enterApp(data.user);
+  }
+ }catch(error){setAuthMessage(readableError(error),true)}finally{setBusy(button,false)}
+});
+function readableError(error){const message=error?.message||'Unbekannter Fehler';if(/invalid login credentials/i.test(message))return'E-Mail oder Passwort stimmt nicht.';if(/user already registered/i.test(message))return'Diese E-Mail hat bereits ein Konto. Melde dich an.';if(/email not confirmed/i.test(message))return'Bitte bestätige zuerst deine E-Mail-Adresse.';if(/password should be at least/i.test(message))return'Das Passwort ist zu kurz.';return message}
+async function ensureProfile(displayName=''){
+ const fallback=displayName||user.user_metadata?.display_name||user.email?.split('@')[0]||'Mitglied';
+ const {data:existing,error:readError}=await supabase.from('cc_profiles').select('display_name').eq('user_id',user.id).maybeSingle();if(readError)throw readError;
+ const name=existing?.display_name||fallback.slice(0,32);
+ const {error}=await supabase.from('cc_profiles').upsert({user_id:user.id,display_name:name,updated_at:new Date().toISOString()},{onConflict:'user_id'});if(error)throw error;
+ profile={display_name:name};$('userName').textContent=name;$('userAvatar').textContent=name.slice(0,1).toUpperCase();$('helloName').textContent=name;
+}
+async function enterApp(authUser,displayName=''){
+ user=authUser;$('authView').classList.add('hidden');$('appView').classList.remove('hidden');
+ try{await ensureProfile(displayName);await loadRooms();const joinCode=new URLSearchParams(location.search).get('join');if(joinCode){const {error}=await supabase.rpc('cc_join_room',{invite:joinCode});if(error)throw error;history.replaceState({},'',location.pathname);await loadRooms();toast('Du bist dem Raum beigetreten.')}if(rooms.length)await openRoom(rooms[0].id);else showPage('overview')}
+ catch(error){toast('Verbindung fehlgeschlagen: '+readableError(error));console.error(error)}
+}
+async function loadRooms(){
+ const {data:members,error}=await supabase.from('cc_room_members').select('room_id,role').eq('user_id',user.id);if(error)throw error;
+ const ids=(members||[]).map(row=>row.room_id);if(!ids.length){rooms=[];renderRooms();return}
+ const {data,error:roomsError}=await supabase.from('cc_rooms').select('id,name,invite_code,owner_id,created_at').in('id',ids).order('created_at',{ascending:false});if(roomsError)throw roomsError;
+ rooms=rooms||[];rooms= data||[];renderRooms();
+}
+function renderRooms(){
+ $('roomCount').textContent=rooms.length;
+ const list=rooms.map(room=>'<button class="room-btn '+(activeRoom?.id===room.id?'active':'')+'" data-room="'+room.id+'"><span class="room-dot"></span><span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">'+escapeHTML(room.name)+'</span></button>').join('');
+ $('roomList').innerHTML=list||'<div class="muted" style="font-size:11px;padding:10px">Noch keine Räume</div>';
+ $('overviewRooms').innerHTML=rooms.length?rooms.map(room=>'<button class="feature" data-open-room="'+room.id+'" style="width:100%;text-align:left;color:inherit;cursor:pointer"><div class="feature-icon">◈</div><div style="min-width:0;flex:1"><b>'+escapeHTML(room.name)+'</b><small>Privater Klassenraum</small></div><span style="color:#72e3e8">→</span></button>').join(''):'<div class="empty-state"><strong>Noch kein Raum?</strong>Erstelle einen Raum oder tritt mit einem Code bei.</div>';
+}
+function showPage(page){
+ $('overviewPage').classList.toggle('hidden',page!=='overview');$('roomPage').classList.toggle('hidden',page!=='room');$('crumbText').textContent=page==='overview'?'ÜBERSICHT':'KLASSENRAUM';
+ document.querySelectorAll('.nav-btn').forEach(btn=>btn.classList.toggle('active',btn.dataset.page===page));
+}
+function setTab(tab){for(const name of ['chat','notes','info']){$(name+'Tab').classList.toggle('hidden',name!==tab)}document.querySelectorAll('.tab').forEach(btn=>btn.classList.toggle('active',btn.dataset.tab===tab))}
+async function openRoom(roomId){
+ const room=rooms.find(item=>item.id===roomId);if(!room)return;activeRoom=room;renderRooms();showPage('room');setTab('chat');
+ $('roomTitleHero').textContent=room.name;$('roomName').textContent=room.name;$('roomDescription').textContent='Ein privater Space für eure Crew.';$('inviteCode').textContent=room.invite_code;
+ if(roomChannel){await supabase.removeChannel(roomChannel);roomChannel=null}
+ await Promise.all([loadMessages(),loadNotes(),loadMembers()]);
+ roomChannel=supabase.channel('cc-room-'+room.id)
+  .on('postgres_changes',{event:'*',schema:'public',table:'cc_messages',filter:'room_id=eq.'+room.id},()=>loadMessages())
+  .on('postgres_changes',{event:'*',schema:'public',table:'cc_notes',filter:'room_id=eq.'+room.id},payload=>{if(document.activeElement!==$('noteEditor'))loadNotes()})
+  .subscribe(status=>{$('chatStatus').textContent=status==='SUBSCRIBED'?'● Live verbunden':status==='CHANNEL_ERROR'?'Verbindung prüfen':'Verbinde …'});
+}
+async function loadMessages(){
+ if(!activeRoom)return;const {data,error}=await supabase.from('cc_messages').select('id,sender_id,body,created_at').eq('room_id',activeRoom.id).order('created_at',{ascending:true}).limit(100);if(error){$('messages').innerHTML='<div class="empty-state">Nachrichten konnten nicht geladen werden.</div>';throw error}
+ lastMessages=data||[];const ids=[...new Set(lastMessages.map(item=>item.sender_id))];let names={};
+ if(ids.length){const {data:people}=await supabase.from('cc_profiles').select('user_id,display_name').in('user_id',ids);(people||[]).forEach(person=>names[person.user_id]=person.display_name)}
+ $('messages').innerHTML=lastMessages.length?lastMessages.map(message=>{const mine=message.sender_id===user.id;const name=names[message.sender_id]||'Mitglied';const time=new Date(message.created_at).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});return '<div class="message '+(mine?'mine':'')+'"><div class="message-avatar">'+escapeHTML(name.slice(0,1).toUpperCase())+'</div><div class="message-body"><div class="message-meta">'+escapeHTML(name)+' · '+time+'</div><div class="bubble">'+escapeHTML(message.body)+'</div></div></div>'}).join(''):'<div class="empty-state"><strong>Der Chat ist noch leer.</strong>Schreib die erste Nachricht! ✨</div>';
+ $('messages').scrollTop=$('messages').scrollHeight;$('messageCount').textContent=lastMessages.length;
+}
+$('messageForm').addEventListener('submit',async event=>{
+ event.preventDefault();const body=$('messageInput').value.trim();if(!body||!activeRoom)return;const button=$('messageForm').querySelector('button');button.disabled=true;
+ try{const {error}=await supabase.from('cc_messages').insert({room_id:activeRoom.id,sender_id:user.id,body});if(error)throw error;$('messageInput').value='';await loadMessages()}catch(error){toast('Nachricht nicht gesendet: '+readableError(error))}finally{button.disabled=false;$('messageInput').focus()}
+});
+async function loadNotes(){if(!activeRoom)return;const {data,error}=await supabase.from('cc_notes').select('content,updated_at,updated_by').eq('room_id',activeRoom.id).maybeSingle();if(error)throw error;if(document.activeElement!==$('noteEditor'))$('noteEditor').value=data?.content||'';$('saveState').textContent=data?.updated_at?'Zuletzt gespeichert: '+new Date(data.updated_at).toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'}):'Noch keine Notizen gespeichert.';$('notesStatus').textContent='Bereit'}
+$('noteEditor').addEventListener('input',()=>{if(!activeRoom)return;$('saveState').textContent='Änderungen werden gespeichert …';clearTimeout(saveTimer);saveTimer=setTimeout(saveNotes,700)});
+async function saveNotes(){if(!activeRoom)return;const roomId=activeRoom.id;const content=$('noteEditor').value;$('saveState').textContent='Speichere …';const {error}=await supabase.from('cc_notes').upsert({room_id:roomId,content,updated_by:user.id,updated_at:new Date().toISOString()},{onConflict:'room_id'});if(error){$('saveState').textContent='Speichern fehlgeschlagen: '+readableError(error);return}$('saveState').textContent='✓ Gespeichert · '+new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}
+async function loadMembers(){if(!activeRoom)return;const {data,error}=await supabase.from('cc_room_members').select('user_id,role').eq('room_id',activeRoom.id);if(error)throw error;const ids=(data||[]).map(row=>row.user_id);$('memberCount').textContent='● '+ids.length+' Mitglieder';$('memberLabel').textContent=ids.length+' Mitglieder in diesem Raum';const {data:people}=ids.length?await supabase.from('cc_profiles').select('user_id,display_name').in('user_id',ids):{data:[]};const lookup=Object.fromEntries((people||[]).map(p=>[p.user_id,p.display_name]));$('memberList').innerHTML=(data||[]).map(row=>'<div class="feature"><div class="avatar" style="width:30px;height:30px;border-radius:10px;font-size:11px">'+escapeHTML((lookup[row.user_id]||'M').slice(0,1).toUpperCase())+'</div><div><b>'+escapeHTML(lookup[row.user_id]||'Mitglied')+(row.user_id===user.id?' (Du)':'')+'</b><small>'+(row.role==='owner'?'Raum-Admin':'Mitglied')+'</small></div></div>').join('')}
+function openModal(title,description,placeholder,action){$('modalTitle').textContent=title;$('modalDescription').textContent=description;$('modalInput').placeholder=placeholder;$('modalInput').value='';modalAction=action;$('modalBack').classList.add('show');setTimeout(()=>$('modalInput').focus(),50)}
+function closeModal(){$('modalBack').classList.remove('show');modalAction=null}
+$('modalCancel').addEventListener('click',closeModal);$('modalBack').addEventListener('click',event=>{if(event.target===$('modalBack'))closeModal()});
+$('modalConfirm').addEventListener('click',async()=>{const value=$('modalInput').value.trim();if(!value)return toast('Bitte gib etwas ein.');const action=modalAction;const button=$('modalConfirm');setBusy(button,true,'Einen Moment …');try{if(action==='create'){const {data,error}=await supabase.rpc('cc_create_room',{room_name:value});if(error)throw error;closeModal();await loadRooms();await openRoom(data);toast('Dein Raum ist bereit!')}else if(action==='join'){const {data,error}=await supabase.rpc('cc_join_room',{invite:value.toUpperCase()});if(error)throw error;closeModal();await loadRooms();await openRoom(data);toast('Du bist dem Raum beigetreten.')}}catch(error){toast(readableError(error))}finally{setBusy(button,false)}});
+function createRoom(){openModal('Neuen Raum erstellen','Gib deinem Raum einen Namen. Du kannst danach einen Code mit Freunden teilen.','z. B. Klasse 9A','create')}
+function joinRoom(){openModal('Raum beitreten','Gib den Einladungscode ein, den du von einem Mitglied bekommen hast.','12-stelliger Code','join')}
+$('createRoomBtn').addEventListener('click',createRoom);$('heroCreateBtn').addEventListener('click',createRoom);$('joinRoomBtn').addEventListener('click',joinRoom);
+async function copyText(value,label){try{await navigator.clipboard.writeText(value);toast(label+' kopiert!')}catch{toast('Kopieren nicht möglich – bitte manuell auswählen.')}}
+function inviteUrl(){return location.origin+location.pathname+'?join='+encodeURIComponent(activeRoom.invite_code)}
+$('shareRoomBtn').addEventListener('click',()=>activeRoom&&copyText(inviteUrl(),'Einladungslink'));
+$('copyCodeBtn').addEventListener('click',()=>activeRoom&&copyText(activeRoom.invite_code,'Einladungscode'));
+$('copyLinkBtn').addEventListener('click',()=>activeRoom&&copyText(inviteUrl(),'Einladungslink'));
+document.querySelectorAll('.nav-btn').forEach(btn=>btn.addEventListener('click',()=>showPage(btn.dataset.page)));
+document.querySelectorAll('.tab').forEach(btn=>btn.addEventListener('click',()=>setTab(btn.dataset.tab)));
+$('roomList').addEventListener('click',event=>{const btn=event.target.closest('[data-room]');if(btn)openRoom(btn.dataset.room)});
+$('overviewRooms').addEventListener('click',event=>{const btn=event.target.closest('[data-open-room]');if(btn)openRoom(btn.dataset.openRoom)});
+$('logoutBtn').addEventListener('click',async()=>{if(roomChannel)await supabase.removeChannel(roomChannel);await supabase.auth.signOut();user=null;activeRoom=null;$('appView').classList.add('hidden');$('authView').classList.remove('hidden');$('password').value='';showAuth('login')});
+supabase.auth.getSession().then(({data,error})=>{if(error)throw error;if(data.session)enterApp(data.session.user)}).catch(error=>setAuthMessage('Sitzung konnte nicht geladen werden: '+readableError(error),true));
+supabase.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_IN'&&session?.user&&!user)enterApp(session.user)});
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+</script>
+</body>
+</html>
